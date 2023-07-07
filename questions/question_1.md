@@ -1,6 +1,6 @@
 # Question 1
 
-What is wrong with this query, and why? What would you do to fix it?
+A SQL query
 
 ```
 SELECT count(*) as num_players, Rank
@@ -9,7 +9,9 @@ JOIN Levels ON (Players.Level_ID = Levels.Level_ID)
 GROUP BY LevelName;
 ```
 
-> Assumption: Using Postgresql Database
+## What is wrong with this query, and why?
+
+> Assumption: Using Postgresql database
 
 ## Answer
 
@@ -32,6 +34,8 @@ GROUP BY LevelName;
 - The default `JOIN` in Postgresql is performing an inner join. To return a complete dataset of all levels accompanied by `num_players` a `RIGHT OUTER JOIN` should be used.
 
 - Optional: Add `ORDER BY Levels.Level_Name, Players.Rank desc` to order the results by `Level_Name` or `ORDER_BY num_players desc` to order the results by most populated levels and ranks.
+
+## What would you do to fix it?
 
 Incorporating all of the above suggestions and assuming the user wants to describe levels by `Level_Name` you get the following query:
 
